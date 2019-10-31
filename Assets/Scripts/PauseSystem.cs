@@ -25,7 +25,7 @@ public class PauseSystem : MonoBehaviour
         get { return pausedCount; }
     }
 
-    private void Awake()
+    private void Start()
     {
         if (instance == null) instance = this;
         else if (instance == this) Destroy(gameObject);
