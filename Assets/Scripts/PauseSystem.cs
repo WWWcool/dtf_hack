@@ -27,8 +27,10 @@ public class PauseSystem : MonoBehaviour
 
     private void Start()
     {
+        Debug.Log(this);
+        Debug.Log(instance);
         if (instance == null) instance = this;
-        else if (instance == this) Destroy(gameObject);
+        else Destroy(gameObject);
         DontDestroyOnLoad(gameObject);
     }
     public void PauseOnOff(bool on)
