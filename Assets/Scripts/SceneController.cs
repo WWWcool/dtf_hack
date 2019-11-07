@@ -86,4 +86,18 @@ public class SceneController : MonoBehaviour
         CheatsSystem.Instance.IsActive = false;
         this.sceneName = sceneName;
     }
+    public void LoadScene(int sceneIndex)
+    {
+        sceneEnding = true;
+        CheatsSystem.Instance.IsActive = false;
+        this.sceneName = NameFromIndex(sceneIndex);
+    }
+    private static string NameFromIndex(int BuildIndex)
+    {
+        string path = SceneUtility.GetScenePathByBuildIndex(BuildIndex);
+        int slash = path.LastIndexOf('/');
+        string name = path.Substring(slash + 1);
+        int dot = name.LastIndexOf('.');
+        return name.Substring(0, dot);
+    }
 }

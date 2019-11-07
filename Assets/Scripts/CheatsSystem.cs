@@ -66,7 +66,7 @@ public class CheatsSystem : MonoBehaviour
 
     private void Check()
     {
-        if (!Input.GetKeyDown(KeyCode.Return) || !isActive) return;
+        if (!(Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter)) || !isActive) return;
 
         string[] tmp = input.text.Split(' ');
 
@@ -118,10 +118,10 @@ public class CheatsSystem : MonoBehaviour
         if (enabled) ScenesButtons.SetActive(true);
         else ScenesButtons.SetActive(false);
     }
-    public void SceneLoadCheat(string scene)
+    public void SceneLoadCheat(string sceneName)
     {
-        Debug.Log(" load scene: " + scene);
-        SceneController.Instance.LoadScene(scene);
+        Debug.Log(" load scene: " + sceneName);
+        SceneController.Instance.LoadScene(sceneName);
     }
     public void InputFieldEnabled(bool enabled)
     {
