@@ -6,11 +6,13 @@ using UnityEngine.UI;
 public class SceneController : MonoBehaviour
 {
     private static SceneController instance = null;
+    [SerializeField]
+    private GameObject loadingSlider;
 
     private bool sceneStarting = true;
     private bool sceneEnding = false;
     private Image fade;
-    private Text textLoading;
+    private Slider slider;
     private float fadeSpeed = 1.5f;
     private string sceneName;
 
@@ -18,19 +20,21 @@ public class SceneController : MonoBehaviour
     {
         get 
         {
-            if (instance == null) Debug.LogError("SceneManager is Null");
+            if (instance == null) Debug.LogError("SceneController is Null");
             return instance;
         }
     }
 
     private void Start()
     {
-        fade = GetComponentInChildren<Image>();
-        textLoading = GetComponentInChildren<Text>();
-
         if (instance == null) instance = this;
         else Destroy(gameObject);
         DontDestroyOnLoad(gameObject);
+
+        fade = GetComponentInChildren<Image>();
+        slider = loadingSlider.GetComponent<Slider>();
+        fade.enabled = false;
+        loadingSlider.SetActive(false);
     }
     private void Update()
     {
@@ -60,7 +64,7 @@ public class SceneController : MonoBehaviour
             sceneEnding = false;
             fade.color = Color.black;
             StartCoroutine(LoadAsync(sceneName));
-            textLoading.enabled = true;
+            loadingSlider.SetActive(true);
         }
     }
     private IEnumerator LoadAsync(string sceneName)
@@ -68,9 +72,11 @@ public class SceneController : MonoBehaviour
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
         while (!asyncLoad.isDone)
         {
+            float progress = Mathf.Clamp01(asyncLoad.progress / 0.9f);
+            slider.value = progress;
             yield return null;
         }
-        textLoading.enabled = false;
+        loadingSlider.SetActive(false);
         sceneStarting = true;
     }
 

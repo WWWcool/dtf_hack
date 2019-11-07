@@ -2,14 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEditor;
 
 public class CheatsSystem : MonoBehaviour
 {
     private static CheatsSystem instance = null;
     private bool isActive;
+    [SerializeField]
+    private GameObject cheatsUI;
+    [SerializeField]
+    private GameObject cheatsWindow;
+    [SerializeField]
+    private GameObject ScenesButtons;
+    [SerializeField]
     private GameObject inputField;
+    [SerializeField]
     private InputField input;
-    string key, value;
+    string value;
+    
+    public string CurrentCommand { get; set; }
 
     public bool IsActive
     {
@@ -17,8 +28,8 @@ public class CheatsSystem : MonoBehaviour
         set 
         { 
             isActive = value;
-            if (IsActive) inputField.SetActive(true);
-            else inputField.SetActive(false);
+            if (isActive) cheatsUI.SetActive(true);
+            else cheatsUI.SetActive(false);
         }
     }
     public static CheatsSystem Instance
@@ -32,22 +43,22 @@ public class CheatsSystem : MonoBehaviour
 
     private void Start()
     {
-        inputField = transform.GetChild(0).gameObject;
-        input = inputField.GetComponent<InputField>();
         if (instance == null) instance = this;
         else Destroy(gameObject);
         DontDestroyOnLoad(gameObject);
+        cheatsUI.SetActive(false);
+        cheatsWindow.SetActive(true);
+        ScenesButtons.SetActive(false);
+        inputField.SetActive(false);
     }
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.BackQuote) && !isActive)
         {
-            inputField.SetActive(true);
-            isActive = true;
+            IsActive = true;
         }else if (Input.GetKeyDown(KeyCode.BackQuote) && isActive)
         {
-            inputField.SetActive(false);
-            isActive = false;
+            IsActive = false;
         }
 
         Check();
@@ -60,32 +71,27 @@ public class CheatsSystem : MonoBehaviour
         string[] tmp = input.text.Split(' ');
 
         if (tmp.Length == 0) return;
-        else if(tmp.Length == 2)
+        else if (tmp.Length == 1)
         {
-            key = tmp[0];
-            value = tmp[1];
-        }else if(tmp.Length > 2)
-        {
-            Error();
-            return;
+            value = tmp[0];
         }
         else
         {
-            key = tmp[0];
-            value = string.Empty;
+            Error(input.text);
+            return;
         }
 
         GetCheat();
     }
     private void GetCheat()
     {
-        switch (key)
+        switch (CurrentCommand)
         {
-            case "loadScene":
-                if (Application.CanStreamedLevelBeLoaded(value))
+            case "setGravityValue":
+                if (int.TryParse(value,out int gravity))
                 {
-                    Debug.Log(inputField + "load scene: " + value);
-                    SceneController.Instance.LoadScene(value);
+                    Debug.Log($"game gravity is set to {gravity}");
+                    Physics2D.gravity = new Vector2(0, gravity);
                 }
                 else
                 {
@@ -100,10 +106,26 @@ public class CheatsSystem : MonoBehaviour
     }
     private void Error()
     {
-        Debug.Log("unknown command: " + input.text);
+        Debug.Log($"unknown command: {CurrentCommand}");
     }
     private void Error(string value)
     {
-        Debug.Log("incorrect value: " + value);
+        Debug.Log($"incorrect value: {value} for {CurrentCommand}");
+    }
+
+    public void ScenesButtonsEnabled(bool enabled)
+    {
+        if (enabled) ScenesButtons.SetActive(true);
+        else ScenesButtons.SetActive(false);
+    }
+    public void SceneLoadCheat(string scene)
+    {
+        Debug.Log(" load scene: " + scene);
+        SceneController.Instance.LoadScene(scene);
+    }
+    public void InputFieldEnabled(bool enabled)
+    {
+        if (enabled) inputField.SetActive(true);
+        else inputField.SetActive(false);
     }
 }

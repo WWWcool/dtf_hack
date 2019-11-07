@@ -27,8 +27,6 @@ public class PauseSystem : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log(this);
-        Debug.Log(instance);
         if (instance == null) instance = this;
         else Destroy(gameObject);
         DontDestroyOnLoad(gameObject);
