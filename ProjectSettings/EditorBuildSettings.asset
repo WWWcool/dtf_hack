@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/FirstScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/SecondScene.unity
+    path: Assets/Scenes/testSceneLoadAsync.unity
     guid: a001ae27635797e47b5105d3dae784e1
   m_configObjects: {}
