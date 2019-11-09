@@ -16,6 +16,7 @@ namespace UnityPrototype
         }
 
         [SerializeField] private EventType m_eventType;
+        [SerializeField] private float m_delay = 0.0f;
         [SerializeField] private UnityEvent m_onEvent;
 
         private void OnEnable()
@@ -57,7 +58,13 @@ namespace UnityPrototype
         private void OnEvent(EventType eventType)
         {
             if (eventType == m_eventType)
-                m_onEvent?.Invoke();
+                StartCoroutine(InvokeCallbackDelayed());
+        }
+
+        private IEnumerator InvokeCallbackDelayed()
+        {
+            yield return new WaitForSeconds(m_delay);
+            m_onEvent?.Invoke();
         }
     }
 }
