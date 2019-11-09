@@ -33,7 +33,6 @@ namespace UnityPrototype
         public void OnDrag(PointerEventData eventData)
         {
             m_endPoint = GetEventWorldPosition(eventData);
-            Debug.Log($"{m_endPoint}, {eventData.position}, {eventData.pointerPressRaycast.worldPosition}");
         }
 
         public void OnEndDrag(PointerEventData eventData)
