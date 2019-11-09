@@ -68,6 +68,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8fe7b1473e8ea844ac3705edf118983, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_torque: 0
   m_resetVelocity: 1
 --- !u!114 &8299369116643123824
 MonoBehaviour:
@@ -82,6 +83,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_eventType: 1
+  m_delay: 0
   m_onEvent:
     m_PersistentCalls:
       m_Calls:

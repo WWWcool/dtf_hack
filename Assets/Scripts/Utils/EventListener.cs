@@ -13,9 +13,11 @@ namespace UnityPrototype
             ImpulseGiven,
             InputStarted,
             InputFinished,
+            InputBlocked,
         }
 
         [SerializeField] private EventType m_eventType;
+        [SerializeField] private float m_delay = 0.0f;
         [SerializeField] private UnityEvent m_onEvent;
 
         private void OnEnable()
@@ -24,6 +26,7 @@ namespace UnityPrototype
             EventBus.Instance.AddListener<GameEvents.ImpulseGiven>(OnImpulseGiven);
             EventBus.Instance.AddListener<GameEvents.InputStarted>(OnInputStarted);
             EventBus.Instance.AddListener<GameEvents.InputFinished>(OnInputFinished);
+            EventBus.Instance.AddListener<GameEvents.InputBlocked>(OnInputBlocked);
         }
 
         private void OnDisable()
@@ -32,6 +35,7 @@ namespace UnityPrototype
             EventBus.Instance.RemoveListener<GameEvents.ImpulseGiven>(OnImpulseGiven);
             EventBus.Instance.RemoveListener<GameEvents.InputStarted>(OnInputStarted);
             EventBus.Instance.RemoveListener<GameEvents.InputFinished>(OnInputFinished);
+            EventBus.Instance.RemoveListener<GameEvents.InputBlocked>(OnInputBlocked);
         }
 
         private void OnBalLReachedGoal(GameEvents.BallReachedGoal e)
@@ -54,10 +58,21 @@ namespace UnityPrototype
             OnEvent(EventType.InputFinished);
         }
 
+        private void OnInputBlocked(GameEvents.InputBlocked e)
+        {
+            OnEvent(EventType.InputFinished);
+        }
+
         private void OnEvent(EventType eventType)
         {
             if (eventType == m_eventType)
-                m_onEvent?.Invoke();
+                StartCoroutine(InvokeCallbackDelayed());
+        }
+
+        private IEnumerator InvokeCallbackDelayed()
+        {
+            yield return new WaitForSeconds(m_delay);
+            m_onEvent?.Invoke();
         }
     }
 }

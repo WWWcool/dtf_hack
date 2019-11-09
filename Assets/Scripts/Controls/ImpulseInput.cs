@@ -16,6 +16,12 @@ namespace UnityPrototype
         private bool m_inputInProgress = false;
         private Camera m_camera;
 
+        private bool m_inputBlocked = false;
+
+        private void OnEnable(){
+            EventBus.Instance.AddListener<GameEvents.InputBlocked>(OnInputBlocked);
+        }
+
         private void Start()
         {
             m_camera = Camera.main;
@@ -28,6 +34,9 @@ namespace UnityPrototype
 
         public void OnBeginDrag(PointerEventData eventData)
         {
+            if(m_inputBlocked)
+                return;
+
             m_startPoint = GetEventWorldPosition(eventData);
             m_inputInProgress = true;
 
@@ -37,17 +46,25 @@ namespace UnityPrototype
         public void OnDrag(PointerEventData eventData)
         {
             m_endPoint = GetEventWorldPosition(eventData);
+
+            EventBus.Instance.Raise(new GameEvents.InputUpdated { impulse = CalculateImpulse() });
         }
 
         public void OnEndDrag(PointerEventData eventData)
         {
+            if(m_inputBlocked)
+                return;
+
             m_endPoint = GetEventWorldPosition(eventData);
             m_inputInProgress = false;
 
-            var dPos = m_startPoint - m_endPoint;
-            var impulse = Vector2.ClampMagnitude(dPos * m_impulseScale, m_maxImpulse);
+            EventBus.Instance.Raise(new GameEvents.InputFinished { impulse = CalculateImpulse() });
+        }
 
-            EventBus.Instance.Raise(new GameEvents.InputFinished { impulse = impulse });
+        private Vector2 CalculateImpulse()
+        {
+            var dPos = m_startPoint - m_endPoint;
+            return Vector2.ClampMagnitude(dPos * m_impulseScale, m_maxImpulse);
         }
 
         private void OnDrawGizmos()
@@ -56,6 +73,11 @@ namespace UnityPrototype
                 return;
             Gizmos.color = Color.blue;
             Gizmos.DrawLine(m_startPoint, m_endPoint);
+        }
+
+        private void OnInputBlocked(GameEvents.InputBlocked e)
+        {
+            m_inputBlocked = e.on;
         }
     }
 }
