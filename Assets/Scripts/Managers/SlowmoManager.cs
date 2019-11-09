@@ -8,24 +8,12 @@ namespace UnityPrototype
     {
         [SerializeField] private float m_inputTimeScale = 0.1f;
 
-        private void OnEnable()
-        {
-            EventBus.Instance.AddListener<GameEvents.InputStarted>(OnInputStarted);
-            EventBus.Instance.AddListener<GameEvents.InputFinished>(OnInputFinished);
-        }
-
-        private void OnDisable()
-        {
-            EventBus.Instance.RemoveListener<GameEvents.InputStarted>(OnInputStarted);
-            EventBus.Instance.RemoveListener<GameEvents.InputFinished>(OnInputFinished);
-        }
-
-        public void OnInputStarted(GameEvents.InputStarted e)
+        public void OnInputStarted()
         {
             ServiceLocator.Get<TimeManager>().ScaleTime(m_inputTimeScale);
         }
         
-        public void OnInputFinished(GameEvents.InputFinished e)
+        public void OnInputFinished()
         {
             ServiceLocator.Get<TimeManager>().ScaleTime(1.0f);
         }
