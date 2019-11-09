@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7582896965385202094}
   - component: {fileID: 6670507713780907332}
   - component: {fileID: 771941579481439575}
+  - component: {fileID: 2102768504039550223}
   m_Layer: 0
   m_Name: GameManagers
   m_TagString: Untagged
@@ -60,7 +61,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dae1d34fab1ca154a9f1376ddcc9ac96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_eventType: 2
+  m_eventType: 1
+  m_delay: 0
   m_onEvent:
     m_PersistentCalls:
       m_Calls:
@@ -75,6 +77,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  m_logEvents: 0
 --- !u!114 &5741165385132354610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87,7 +90,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dae1d34fab1ca154a9f1376ddcc9ac96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_eventType: 3
+  m_eventType: 2
+  m_delay: 0
   m_onEvent:
     m_PersistentCalls:
       m_Calls:
@@ -102,6 +106,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  m_logEvents: 0
 --- !u!114 &7582896965385202094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,3 +146,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_overrideGravity: 0
   m_defaultGravity: {x: 0, y: 0}
+--- !u!114 &2102768504039550223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5309516961143398797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6379ba30071d8c4d9b6b72ecba9f0c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_rules:
+  - type: 0
+    value: 1
+    completeType: 0
+    conditionType: 1
+  - type: 1
+    value: 1
+    completeType: 1
+    conditionType: 0

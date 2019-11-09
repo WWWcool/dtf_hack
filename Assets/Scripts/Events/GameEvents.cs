@@ -2,8 +2,6 @@ using UnityEngine;
 
 namespace GameEvents
 {
-    public class BallReachedGoal : GameEvent { }
-
     public class ImpulseGiven : GameEvent { }
 
     public class InputStarted : GameEvent { }
@@ -19,5 +17,15 @@ namespace GameEvents
     public class InputBlocked : GameEvent
     {
         public bool on;
+    }
+
+    public class RuleTriggered : GameEvent
+    {
+        public RuleType type;
+        public int value;
+    }
+    public class GameEnded : GameEvent
+    {
+        public bool win;
     }
 }

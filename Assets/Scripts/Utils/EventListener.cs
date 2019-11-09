@@ -9,38 +9,37 @@ namespace UnityPrototype
     {
         private enum EventType
         {
-            BallReachedGoal,
             ImpulseGiven,
             InputStarted,
             InputFinished,
             InputBlocked,
+            RuleTriggered,
+            GameEnded,
         }
 
         [SerializeField] private EventType m_eventType;
         [SerializeField] private float m_delay = 0.0f;
         [SerializeField] private UnityEvent m_onEvent;
+        [SerializeField] private bool m_logEvents;
 
         private void OnEnable()
         {
-            EventBus.Instance.AddListener<GameEvents.BallReachedGoal>(OnBalLReachedGoal);
             EventBus.Instance.AddListener<GameEvents.ImpulseGiven>(OnImpulseGiven);
             EventBus.Instance.AddListener<GameEvents.InputStarted>(OnInputStarted);
             EventBus.Instance.AddListener<GameEvents.InputFinished>(OnInputFinished);
             EventBus.Instance.AddListener<GameEvents.InputBlocked>(OnInputBlocked);
+            EventBus.Instance.AddListener<GameEvents.RuleTriggered>(OnRuleTriggered);
+            EventBus.Instance.AddListener<GameEvents.GameEnded>(OnGameEnded);
         }
 
         private void OnDisable()
         {
-            EventBus.Instance.RemoveListener<GameEvents.BallReachedGoal>(OnBalLReachedGoal);
             EventBus.Instance.RemoveListener<GameEvents.ImpulseGiven>(OnImpulseGiven);
             EventBus.Instance.RemoveListener<GameEvents.InputStarted>(OnInputStarted);
             EventBus.Instance.RemoveListener<GameEvents.InputFinished>(OnInputFinished);
             EventBus.Instance.RemoveListener<GameEvents.InputBlocked>(OnInputBlocked);
-        }
-
-        private void OnBalLReachedGoal(GameEvents.BallReachedGoal e)
-        {
-            OnEvent(EventType.BallReachedGoal);
+            EventBus.Instance.RemoveListener<GameEvents.RuleTriggered>(OnRuleTriggered);
+            EventBus.Instance.RemoveListener<GameEvents.GameEnded>(OnGameEnded);
         }
 
         private void OnImpulseGiven(GameEvents.ImpulseGiven e)
@@ -63,10 +62,24 @@ namespace UnityPrototype
             OnEvent(EventType.InputFinished);
         }
 
+        private void OnRuleTriggered(GameEvents.RuleTriggered e)
+        {
+            OnEvent(EventType.RuleTriggered);
+        }
+
+        private void OnGameEnded(GameEvents.GameEnded e)
+        {
+            OnEvent(EventType.GameEnded);
+        }
+
         private void OnEvent(EventType eventType)
         {
-            if (eventType == m_eventType)
+            if (eventType == m_eventType){
+                if(m_logEvents){
+                    print("[EventListener][OnEvent] got event: " + eventType.ToString());
+                }
                 StartCoroutine(InvokeCallbackDelayed());
+            }
         }
 
         private IEnumerator InvokeCallbackDelayed()

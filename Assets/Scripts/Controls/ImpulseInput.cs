@@ -41,6 +41,7 @@ namespace UnityPrototype
             m_inputInProgress = true;
 
             EventBus.Instance.Raise(new GameEvents.InputStarted());
+            EventBus.Instance.Raise(new GameEvents.RuleTriggered{type = RuleType.TurnCount, value = 1});
         }
 
         public void OnDrag(PointerEventData eventData)
