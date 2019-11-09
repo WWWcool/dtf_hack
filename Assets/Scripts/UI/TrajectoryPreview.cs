@@ -69,7 +69,8 @@ namespace UnityPrototype
         {
             var targetBody = m_target.GetCachedComponent<Rigidbody2D>();
             var velocity = m_impulse / targetBody.mass;
-            var points = CalculateTrajectory(targetBody.transform.position, velocity, Physics2D.gravity);
+            var gravity = ServiceLocator.Get<GravityManager>().originalGravity;
+            var points = CalculateTrajectory(targetBody.transform.position, velocity, gravity);
 
             m_line.positionCount = points.Count;
             m_line.SetPositions(points.ToArray());
