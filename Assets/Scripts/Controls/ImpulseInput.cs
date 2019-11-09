@@ -11,6 +11,7 @@ namespace UnityPrototype
         [SerializeField] private float m_impulseScale;
         [SerializeField] private UnityEventVector2 m_onInput;
 
+        private Vector2 m_startPoint = Vector2.zero;
         private Vector2 m_endPoint = Vector2.zero;
         private bool m_inputInProgress = false;
         private Camera m_camera;
@@ -27,6 +28,7 @@ namespace UnityPrototype
 
         public void OnBeginDrag(PointerEventData eventData)
         {
+            m_startPoint = GetEventWorldPosition(eventData);
             m_inputInProgress = true;
 
             EventBus.Instance.Raise(new GameEvents.InputStarted());
@@ -42,12 +44,10 @@ namespace UnityPrototype
             m_endPoint = GetEventWorldPosition(eventData);
             m_inputInProgress = false;
 
-            var dPos = (Vector2)transform.position - m_endPoint;
+            var dPos = m_startPoint - m_endPoint;
             var impulse = Vector2.ClampMagnitude(dPos * m_impulseScale, m_maxImpulse);
 
-            m_onInput?.Invoke(impulse);
-
-            EventBus.Instance.Raise(new GameEvents.InputFinished());
+            EventBus.Instance.Raise(new GameEvents.InputFinished { impulse = impulse });
         }
 
         private void OnDrawGizmos()
@@ -55,7 +55,7 @@ namespace UnityPrototype
             if (!m_inputInProgress)
                 return;
             Gizmos.color = Color.blue;
-            Gizmos.DrawLine(transform.position, m_endPoint);
+            Gizmos.DrawLine(m_startPoint, m_endPoint);
         }
     }
 }

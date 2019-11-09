@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace GameEvents
 {
     public class BallReachedGoal : GameEvent { }
@@ -5,5 +7,8 @@ namespace GameEvents
     public class ImpulseGiven : GameEvent { }
 
     public class InputStarted : GameEvent { }
-    public class InputFinished : GameEvent { }
+    public class InputFinished : GameEvent
+    {
+        public Vector2 impulse;
+    }
 }
