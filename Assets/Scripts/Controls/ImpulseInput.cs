@@ -28,6 +28,8 @@ namespace UnityPrototype
         public void OnBeginDrag(PointerEventData eventData)
         {
             m_inputInProgress = true;
+
+            EventBus.Instance.Raise(new GameEvents.InputStarted());
         }
 
         public void OnDrag(PointerEventData eventData)
@@ -44,6 +46,8 @@ namespace UnityPrototype
             var impulse = Vector2.ClampMagnitude(dPos * m_impulseScale, m_maxImpulse);
 
             m_onInput?.Invoke(impulse);
+
+            EventBus.Instance.Raise(new GameEvents.InputFinished());
         }
 
         private void OnDrawGizmos()
