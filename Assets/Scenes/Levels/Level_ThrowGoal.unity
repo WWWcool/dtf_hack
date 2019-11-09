@@ -165,6 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8fe7b1473e8ea844ac3705edf118983, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_torque: 20
   m_resetVelocity: 1
 --- !u!50 &1041877838 stripped
 Rigidbody2D:

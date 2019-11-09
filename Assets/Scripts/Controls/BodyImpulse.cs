@@ -6,6 +6,7 @@ namespace UnityPrototype
 {
     public class BodyImpulse : MonoBehaviour
     {
+        [SerializeField] private float m_torque = 0.0f;
         [SerializeField] private bool m_resetVelocity = false;
 
         private void OnEnable()
@@ -30,6 +31,8 @@ namespace UnityPrototype
             if (m_resetVelocity)
                 body.velocity = Vector2.zero;
             body.AddForce(impulse, ForceMode2D.Impulse);
+
+            body.AddTorque(m_torque);
 
             EventBus.Instance.Raise(new GameEvents.ImpulseGiven());
         }
