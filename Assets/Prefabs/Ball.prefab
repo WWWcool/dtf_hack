@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8493173078449978468}
   - component: {fileID: 4576324804349534349}
   - component: {fileID: 5361868066385854864}
+  - component: {fileID: 8299369116643123824}
   m_Layer: 8
   m_Name: Ball
   m_TagString: Untagged
@@ -50,7 +51,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 6200000, guid: a8105379ddc6a894a85f05a431a02b36, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -97,6 +98,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_resetVelocity: 1
+--- !u!114 &8299369116643123824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6794410901830277628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dae1d34fab1ca154a9f1376ddcc9ac96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_eventType: 1
+  m_onEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8493173078449978468}
+        m_MethodName: set_gravityScale
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 1
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6794410901867888823
 GameObject:
   m_ObjectHideFlags: 0
