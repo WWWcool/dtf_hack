@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4696545567985249949}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Colliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 4696545569629882762}
   - component: {fileID: 7278297914839324515}
   - component: {fileID: 3742611668278195569}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Goal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!114 &3742611668278195569
 MonoBehaviour:
@@ -101,6 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_detector: {fileID: 6468224862554912183}
+  m_directionType: 0
 --- !u!1 &4696545569792716160
 GameObject:
   m_ObjectHideFlags: 0
@@ -111,7 +112,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4696545569792716163}
   - component: {fileID: 4696545569792716162}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -280,11 +281,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Right
       objectReference: {fileID: 0}
-    - target: {fileID: 4169069664827143103, guid: 85978313d7c7a0d49b922b9e6171a7b4,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 4169069664827143100, guid: 85978313d7c7a0d49b922b9e6171a7b4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -359,11 +355,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Left
-      objectReference: {fileID: 0}
-    - target: {fileID: 4169069664827143103, guid: 85978313d7c7a0d49b922b9e6171a7b4,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4169069664827143100, guid: 85978313d7c7a0d49b922b9e6171a7b4,
         type: 3}
