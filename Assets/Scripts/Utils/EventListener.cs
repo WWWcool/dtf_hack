@@ -13,6 +13,7 @@ namespace UnityPrototype
             ImpulseGiven,
             InputStarted,
             InputFinished,
+            InputBlocked,
         }
 
         [SerializeField] private EventType m_eventType;
@@ -24,6 +25,7 @@ namespace UnityPrototype
             EventBus.Instance.AddListener<GameEvents.ImpulseGiven>(OnImpulseGiven);
             EventBus.Instance.AddListener<GameEvents.InputStarted>(OnInputStarted);
             EventBus.Instance.AddListener<GameEvents.InputFinished>(OnInputFinished);
+            EventBus.Instance.AddListener<GameEvents.InputBlocked>(OnInputBlocked);
         }
 
         private void OnDisable()
@@ -32,6 +34,7 @@ namespace UnityPrototype
             EventBus.Instance.RemoveListener<GameEvents.ImpulseGiven>(OnImpulseGiven);
             EventBus.Instance.RemoveListener<GameEvents.InputStarted>(OnInputStarted);
             EventBus.Instance.RemoveListener<GameEvents.InputFinished>(OnInputFinished);
+            EventBus.Instance.RemoveListener<GameEvents.InputBlocked>(OnInputBlocked);
         }
 
         private void OnBalLReachedGoal(GameEvents.BallReachedGoal e)
@@ -50,6 +53,11 @@ namespace UnityPrototype
         }
 
         private void OnInputFinished(GameEvents.InputFinished e)
+        {
+            OnEvent(EventType.InputFinished);
+        }
+
+        private void OnInputBlocked(GameEvents.InputBlocked e)
         {
             OnEvent(EventType.InputFinished);
         }

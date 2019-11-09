@@ -11,4 +11,9 @@ namespace GameEvents
     {
         public Vector2 impulse;
     }
+
+    public class InputBlocked : GameEvent
+    {
+        public bool on;
+    }
 }

@@ -16,6 +16,12 @@ namespace UnityPrototype
         private bool m_inputInProgress = false;
         private Camera m_camera;
 
+        private bool m_inputBlocked = false;
+
+        private void OnEnable(){
+            EventBus.Instance.AddListener<GameEvents.InputBlocked>(OnInputBlocked);
+        }
+
         private void Start()
         {
             m_camera = Camera.main;
@@ -28,6 +34,9 @@ namespace UnityPrototype
 
         public void OnBeginDrag(PointerEventData eventData)
         {
+            if(m_inputBlocked)
+                return;
+
             m_startPoint = GetEventWorldPosition(eventData);
             m_inputInProgress = true;
 
@@ -41,6 +50,9 @@ namespace UnityPrototype
 
         public void OnEndDrag(PointerEventData eventData)
         {
+            if(m_inputBlocked)
+                return;
+
             m_endPoint = GetEventWorldPosition(eventData);
             m_inputInProgress = false;
 
@@ -56,6 +68,11 @@ namespace UnityPrototype
                 return;
             Gizmos.color = Color.blue;
             Gizmos.DrawLine(m_startPoint, m_endPoint);
+        }
+
+        private void OnInputBlocked(GameEvents.InputBlocked e)
+        {
+            m_inputBlocked = e.on;
         }
     }
 }
