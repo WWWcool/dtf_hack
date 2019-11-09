@@ -7,6 +7,10 @@ namespace GameEvents
     public class ImpulseGiven : GameEvent { }
 
     public class InputStarted : GameEvent { }
+    public class InputUpdated : GameEvent
+    {
+        public Vector2 impulse;
+    }
     public class InputFinished : GameEvent
     {
         public Vector2 impulse;

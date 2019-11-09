@@ -46,6 +46,8 @@ namespace UnityPrototype
         public void OnDrag(PointerEventData eventData)
         {
             m_endPoint = GetEventWorldPosition(eventData);
+
+            EventBus.Instance.Raise(new GameEvents.InputUpdated { impulse = CalculateImpulse() });
         }
 
         public void OnEndDrag(PointerEventData eventData)
@@ -56,10 +58,13 @@ namespace UnityPrototype
             m_endPoint = GetEventWorldPosition(eventData);
             m_inputInProgress = false;
 
-            var dPos = m_startPoint - m_endPoint;
-            var impulse = Vector2.ClampMagnitude(dPos * m_impulseScale, m_maxImpulse);
+            EventBus.Instance.Raise(new GameEvents.InputFinished { impulse = CalculateImpulse() });
+        }
 
-            EventBus.Instance.Raise(new GameEvents.InputFinished { impulse = impulse });
+        private Vector2 CalculateImpulse()
+        {
+            var dPos = m_startPoint - m_endPoint;
+            return Vector2.ClampMagnitude(dPos * m_impulseScale, m_maxImpulse);
         }
 
         private void OnDrawGizmos()
