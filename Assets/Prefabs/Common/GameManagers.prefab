@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 4091480090514352793}
   - component: {fileID: 5741165385132354610}
   - component: {fileID: 7582896965385202094}
+  - component: {fileID: 6670507713780907332}
+  - component: {fileID: 771941579481439575}
   m_Layer: 0
   m_Name: GameManagers
   m_TagString: Untagged
@@ -113,3 +115,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_inputTimeScale: 0.1
+--- !u!114 &6670507713780907332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5309516961143398797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 014102bdb98ea6b459b67ede4a11d35c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &771941579481439575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5309516961143398797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daf98a24dede8004ba64193dcffb4a4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_overrideGravity: 0
+  m_defaultGravity: {x: 0, y: 0}

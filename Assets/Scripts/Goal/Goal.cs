@@ -10,6 +10,7 @@ namespace UnityPrototype
         {
             Top,
             Bottom,
+            Any
         }
 
         [SerializeField] private ObjectDetector m_detector = null;
@@ -28,8 +29,11 @@ namespace UnityPrototype
 
         private void OnBallPassed(DirectionType type)
         {
-            if (type != m_directionType)
-                return;
+            if(m_directionType != DirectionType.Any)
+            {
+                if (type != m_directionType)
+                    return;
+            } 
 
             Debug.Log("Ball reached the goal");
             EventBus.Instance.Raise(new GameEvents.BallReachedGoal());
