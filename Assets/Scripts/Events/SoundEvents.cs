@@ -8,6 +8,7 @@ namespace SoundEvents
         BallPassedThroughGoal,
         SpikesAppeared,
         LevelFailed,
+        LevelCompleted,
     }
 
     public class SoundEvent : GameEvent

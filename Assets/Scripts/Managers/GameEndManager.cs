@@ -19,6 +19,11 @@ public class GameEndManager : MonoBehaviour
 
     void OnGameEnded(GameEvents.GameEnded e)
     {
+        if (e.win)
+            EventBus.Instance.Raise(new SoundEvents.SoundEvent { type = SoundEvents.SoundType.LevelCompleted });
+        else
+            EventBus.Instance.Raise(new SoundEvents.SoundEvent { type = SoundEvents.SoundType.LevelFailed });
+
         StartCoroutine(ProcessGameEndDelayed(e));
     }
 
