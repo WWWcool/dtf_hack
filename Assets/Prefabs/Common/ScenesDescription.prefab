@@ -45,7 +45,40 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_scenes:
   - scene: Level1
-    title: "\u041F\u0440\u043E\u0441\u0442\u043E \u0431\u0440\u043E\u0441\u0430\u0439"
+    title: Basketball
+    rules:
+    - type: 1
+      value: 1
+      completeType: 1
+      conditionType: 0
+    - type: 0
+      value: 1
+      completeType: 3
+      conditionType: 0
+  - scene: Level_BottomGoal
+    title: Check your back
+    rules:
+    - type: 0
+      value: 1
+      completeType: 3
+      conditionType: 1
+    - type: 1
+      value: 1
+      completeType: 1
+      conditionType: 0
+  - scene: Level_MovingGoal
+    title: Catch me if you can
+    rules:
+    - type: 0
+      value: 1
+      completeType: 3
+      conditionType: 1
+    - type: 1
+      value: 1
+      completeType: 1
+      conditionType: 0
+  - scene: Level_OneTry
+    title: One shot one kill
     rules:
     - type: 0
       value: 1
@@ -55,12 +88,78 @@ MonoBehaviour:
       value: 1
       completeType: 1
       conditionType: 0
-  - scene: Level_MovingGoal
-    title: "\u041F\u043E\u043F\u0440\u043E\u0431\u0443\u0439 \u043F\u043E\u043F\u0430\u0441\u0442\u044C"
+  - scene: Level_Projectile
+    title: The Matrix
     rules:
     - type: 0
-      value: 3
+      value: 2
       completeType: 0
+      conditionType: 1
+    - type: 1
+      value: 1
+      completeType: 1
+      conditionType: 0
+  - scene: Level_ThrowGoal
+    title: WTF?!
+    rules:
+    - type: 0
+      value: 1
+      completeType: 3
+      conditionType: 1
+    - type: 1
+      value: 1
+      completeType: 1
+      conditionType: 0
+  - scene: Level_EdgeTeleportation
+    title: Around the world, around the world
+    rules:
+    - type: 0
+      value: 1
+      completeType: 3
+      conditionType: 1
+    - type: 1
+      value: 1
+      completeType: 1
+      conditionType: 0
+  - scene: Level_BallBanging
+    title: The floor is lava
+    rules:
+    - type: 0
+      value: 1
+      completeType: 3
+      conditionType: 1
+    - type: 1
+      value: 1
+      completeType: 1
+      conditionType: 0
+  - scene: Level_DragGoal
+    title: That's unfair
+    rules:
+    - type: 0
+      value: 1
+      completeType: 3
+      conditionType: 1
+    - type: 1
+      value: 1
+      completeType: 1
+      conditionType: 0
+  - scene: Level_ReverseGravity
+    title: ground control to major ball
+    rules:
+    - type: 0
+      value: 1
+      completeType: 3
+      conditionType: 1
+    - type: 1
+      value: 1
+      completeType: 1
+      conditionType: 0
+  - scene: Level_BlackHole
+    title: Come on TARS
+    rules:
+    - type: 0
+      value: 1
+      completeType: 3
       conditionType: 1
     - type: 1
       value: 1
