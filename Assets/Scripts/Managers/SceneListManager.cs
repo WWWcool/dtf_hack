@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SceneListManager : MonoBehaviour
 {
@@ -12,6 +13,12 @@ public class SceneListManager : MonoBehaviour
 
     private List<SceneDescription> m_scenes;
     private int loadIndex = 0;
+    private int currentLoadIndex = 0;
+
+    private bool sceneStarting = true;
+    private bool sceneEnding = false;
+    private Image fade;
+    [SerializeField]private float fadeSpeed = 5.5f;
 
     private void OnEnable()
     {
@@ -22,7 +29,11 @@ public class SceneListManager : MonoBehaviour
 
     private void Start()
     {
+        GameObject image = GameObject.Find("Fade");
+        fade = image.GetComponent<Image>();
         loadIndex = m_resetLoadIndex ? 0 : PlayerPrefs.GetInt(SAVE_KEY, loadIndex);
+        currentLoadIndex = SceneManager.GetActiveScene().buildIndex;
+        fade.enabled = false;
     }
 
     public string GetCurrentSceneTitle()
@@ -42,32 +53,63 @@ public class SceneListManager : MonoBehaviour
 
     public void LoadLastSavedScene()
     {
-        LoadScene(loadIndex);
+        currentLoadIndex = loadIndex;
+        sceneEnding = true;
     }
 
     public void LoadNextScene()
     {
+        currentLoadIndex++;
         SaveCurrentSceneIndex();
-        LoadScene(GetCurrentSceneIndex() + 1);
+        sceneEnding = true;
     }
 
     public void LoadPreviousScene()
     {
-        LoadScene(GetCurrentSceneIndex() - 1);
+        currentLoadIndex--;
+        sceneEnding = true;
     }
 
     private void SaveCurrentSceneIndex()
     {
-        PlayerPrefs.SetInt(SAVE_KEY, GetCurrentSceneIndex());
-    }
-
-    private void LoadScene(int index)
-    {
-        SceneManager.LoadScene(m_scenes[index].scene);
+        PlayerPrefs.SetInt(SAVE_KEY, currentLoadIndex);
     }
 
     private int GetCurrentSceneIndex()
     {
         return m_scenes.FindIndex(desc => desc.scene == SceneManager.GetActiveScene().name);
     }
+
+
+    private void Update()
+    {
+        if (sceneStarting) StartScene();
+        if (sceneEnding) EndScene();
+    }
+
+    private void StartScene()
+    {
+        fade.enabled = true;
+        fade.color = Color.Lerp(fade.color, Color.clear, fadeSpeed * Time.deltaTime);
+
+        if (fade.color.a <= 0.01f)
+        {
+            fade.color = Color.clear;
+            fade.enabled = false;
+            sceneStarting = false;
+        }
+    }
+    private void EndScene()
+    {
+        sceneStarting = false;
+        fade.enabled = true;
+        fade.color = Color.Lerp(fade.color, Color.black, fadeSpeed * Time.deltaTime);
+        if (fade.color.a >= 0.95f)
+        {
+            sceneEnding = false;
+            fade.color = Color.black;
+            SceneManager.LoadScene(currentLoadIndex);
+        }
+    }
+
 }
