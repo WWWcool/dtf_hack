@@ -15,6 +15,8 @@ namespace UnityPrototype
             InputBlocked,
             RuleTriggered,
             GameEnded,
+            UpdateUI,
+            GameStarted,
         }
 
         [SerializeField] private EventType m_eventType;
@@ -30,6 +32,8 @@ namespace UnityPrototype
             EventBus.Instance.AddListener<GameEvents.InputBlocked>(OnInputBlocked);
             EventBus.Instance.AddListener<GameEvents.RuleTriggered>(OnRuleTriggered);
             EventBus.Instance.AddListener<GameEvents.GameEnded>(OnGameEnded);
+            EventBus.Instance.AddListener<GameEvents.UpdateUI>(OnUpdateUI);
+            EventBus.Instance.AddListener<GameEvents.GameStarted>(OnGameStarted);
         }
 
         private void OnDisable()
@@ -40,6 +44,8 @@ namespace UnityPrototype
             EventBus.Instance.RemoveListener<GameEvents.InputBlocked>(OnInputBlocked);
             EventBus.Instance.RemoveListener<GameEvents.RuleTriggered>(OnRuleTriggered);
             EventBus.Instance.RemoveListener<GameEvents.GameEnded>(OnGameEnded);
+            EventBus.Instance.RemoveListener<GameEvents.UpdateUI>(OnUpdateUI);
+            EventBus.Instance.RemoveListener<GameEvents.GameStarted>(OnGameStarted);
         }
 
         private void OnImpulseGiven(GameEvents.ImpulseGiven e)
@@ -72,10 +78,22 @@ namespace UnityPrototype
             OnEvent(EventType.GameEnded);
         }
 
+        private void OnUpdateUI(GameEvents.UpdateUI e)
+        {
+            OnEvent(EventType.UpdateUI);
+        }
+
+        private void OnGameStarted(GameEvents.GameStarted e)
+        {
+            OnEvent(EventType.GameStarted);
+        }
+
         private void OnEvent(EventType eventType)
         {
-            if (eventType == m_eventType){
-                if(m_logEvents){
+            if (eventType == m_eventType)
+            {
+                if (m_logEvents)
+                {
                     print("[EventListener][OnEvent] got event: " + eventType.ToString());
                 }
                 StartCoroutine(InvokeCallbackDelayed());

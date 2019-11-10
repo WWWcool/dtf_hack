@@ -18,7 +18,7 @@ public class SceneListManager : MonoBehaviour
     private bool sceneStarting = true;
     private bool sceneEnding = false;
     private Image fade;
-    [SerializeField]private float fadeSpeed = 5.5f;
+    [SerializeField] private float fadeSpeed = 5.5f;
 
     private void OnEnable()
     {
@@ -55,6 +55,7 @@ public class SceneListManager : MonoBehaviour
     {
         currentLoadIndex = loadIndex;
         sceneEnding = true;
+        EventBus.Instance.Raise(new GameEvents.GameStarted());
     }
 
     public void LoadNextScene()

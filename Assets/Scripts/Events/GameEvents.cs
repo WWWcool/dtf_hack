@@ -28,11 +28,13 @@ namespace GameEvents
     {
         public bool win;
     }
-    
+
     public class UpdateUI : GameEvent
     {
         public int goalCount = -1;
         public int turnCount = -1;
         public int timer = -1;
     }
+
+    public class GameStarted : GameEvent { }
 }
