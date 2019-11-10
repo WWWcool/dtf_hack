@@ -13,6 +13,9 @@ namespace UnityPrototype
 
         public void SwitchState()
         {
+            if (m_index >= m_states.Length - 1)
+                return;
+
             m_index++;
             UpdateState();
         }
