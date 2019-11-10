@@ -21,8 +21,10 @@ public class TopHUD : MonoBehaviour
     [SerializeField] private Text m_goalCount;
     [SerializeField] private string m_animNameAppear;
     [SerializeField] private string m_animNameDisappear;
+    [SerializeField] private GameObject m_hitFaceEfxPrefab;
 
     private TopHUDCfg cfg;
+    private bool hitFace = false;
 
     void Start()
     {
@@ -101,16 +103,22 @@ public class TopHUD : MonoBehaviour
     void OnGameEnded(GameEvents.GameEnded e)
     {
         m_anim.Play(m_animNameDisappear);
-        StartCoroutine("OnCompleteDisappearAnimation");
+        if (!e.win && !hitFace)
+        {
+            hitFace = true;
+            var efx = Instantiate(m_hitFaceEfxPrefab);
+            efx.transform.SetParent(transform.parent);
+        }
+        // StartCoroutine("OnCompleteDisappearAnimation");
     }
 
-    IEnumerator OnCompleteDisappearAnimation()
-    {
-        while (m_anim.IsPlaying(m_animNameDisappear))
-            yield return null;
+    // IEnumerator OnCompleteDisappearAnimation()
+    // {
+    //     while (m_anim.IsPlaying(m_animNameDisappear))
+    //         yield return null;
 
-        gameObject.SetActive(false);
-    }
+    //     gameObject.SetActive(false);
+    // }
 
     public void SetGoalCount(int count)
     {
