@@ -21,7 +21,6 @@ public class TopHUD : MonoBehaviour
     [SerializeField] private Text m_goalCount;
     [SerializeField] private string m_animNameAppear;
     [SerializeField] private string m_animNameDisappear;
-    [SerializeField] private LayoutGroup m_layout;
 
     private TopHUDCfg cfg;
 
@@ -37,9 +36,6 @@ public class TopHUD : MonoBehaviour
         cfg = manager.GetCurrentSceneTopHUDCfg();
         InitUI(manager.GetCurrentSceneTitle(), manager.GetCurrentSceneRules());
         ApplyCfg();
-
-        var rect = gameObject.GetComponent<RectTransform>();
-        rect.sizeDelta = new Vector2(m_layout.preferredWidth, m_layout.preferredHeight);
 
         EventBus.Instance.AddListener<GameEvents.UpdateUI>(OnUpdateUI);
         EventBus.Instance.AddListener<GameEvents.GameEnded>(OnGameEnded);
@@ -102,24 +98,24 @@ public class TopHUD : MonoBehaviour
 
     void OnGameEnded(GameEvents.GameEnded e)
     {
-        gameObject.SetActive(false);
-        // m_anim.Play(m_animNameDisappear);
-        // StartCoroutine("OnCompleteDisappearAnimation");
+        // gameObject.SetActive(false);
+        m_anim.Play(m_animNameDisappear);
+        StartCoroutine("OnCompleteDisappearAnimation");
     }
 
-    // IEnumerator OnCompleteDisappearAnimation()
-    // {
-    //     while (m_anim.IsPlaying(m_animNameDisappear))
-    //         yield return null;
+    IEnumerator OnCompleteDisappearAnimation()
+    {
+        while (m_anim.IsPlaying(m_animNameDisappear))
+            yield return null;
 
-    //     gameObject.SetActive(false);
-    // }
+        gameObject.SetActive(false);
+    }
 
     public void SetGoalCount(int count)
     {
         if (m_goalCount.IsActive())
         {
-            m_goalCount.text = "Очков: " + count.ToString();
+            m_goalCount.text = count.ToString();
         }
     }
 
@@ -127,7 +123,7 @@ public class TopHUD : MonoBehaviour
     {
         if (m_turnCount.IsActive())
         {
-            m_turnCount.text = "Бросков: " + count.ToString();
+            m_turnCount.text = count.ToString() + " left";
         }
     }
 
@@ -135,7 +131,7 @@ public class TopHUD : MonoBehaviour
     {
         if (m_timer.IsActive())
         {
-            m_timer.text = "Время: " + count.ToString();
+            m_timer.text = count.ToString() + " sec";
         }
     }
 
