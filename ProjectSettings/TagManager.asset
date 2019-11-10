@@ -7,6 +7,7 @@ TagManager:
   - Ball
   - Ground
   - Goal
+  - FxTemporaire
   layers:
   - Default
   - TransparentFX
@@ -43,4 +44,25 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 4045058205
+    locked: 0
+  - name: RingShield
+    uniqueID: 762458383
+    locked: 0
+  - name: RingBack
+    uniqueID: 3426824227
+    locked: 0
+  - name: Ball
+    uniqueID: 3796878967
+    locked: 0
+  - name: RingFront
+    uniqueID: 3329719857
+    locked: 0
+  - name: Wall
+    uniqueID: 738270591
+    locked: 0
+  - name: Trajectory
+    uniqueID: 1125548297
     locked: 0
