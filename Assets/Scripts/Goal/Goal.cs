@@ -37,6 +37,7 @@ namespace UnityPrototype
 
             Debug.Log("Ball reached the goal");
             EventBus.Instance.Raise(new GameEvents.RuleTriggered { type = RuleType.GoalCount, value = 1 });
+            EventBus.Instance.Raise(new SoundEvents.SoundEvent { type = SoundEvents.SoundType.BallPassedThroughGoal });
             m_ballPassed = true;
         }
 
