@@ -135,12 +135,12 @@ PrefabInstance:
     - target: {fileID: 6794410901830277629, guid: 299dd80637949bc46a30dc8b9b39b8f1,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.76
+      value: -6.9
       objectReference: {fileID: 0}
     - target: {fileID: 6794410901830277629, guid: 299dd80637949bc46a30dc8b9b39b8f1,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.01
+      value: 2.02
       objectReference: {fileID: 0}
     - target: {fileID: 6794410901830277629, guid: 299dd80637949bc46a30dc8b9b39b8f1,
         type: 3}
@@ -275,15 +275,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -7125458871151734753, guid: dfb166ada9f3595488cbaf10d26ed9d7,
+    - target: {fileID: 771941579481439575, guid: dfb166ada9f3595488cbaf10d26ed9d7,
         type: 3}
-      propertyPath: m_canBeEdgeTeleported
+      propertyPath: m_overrideGravity
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: -6920777422796474292, guid: dfb166ada9f3595488cbaf10d26ed9d7,
+    - target: {fileID: 771941579481439575, guid: dfb166ada9f3595488cbaf10d26ed9d7,
         type: 3}
-      propertyPath: m_setTimer
-      value: 0
+      propertyPath: m_defaultGravity.y
+      value: 9.8
       objectReference: {fileID: 0}
     - target: {fileID: 5309516961143398797, guid: dfb166ada9f3595488cbaf10d26ed9d7,
         type: 3}
@@ -345,15 +345,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 771941579481439575, guid: dfb166ada9f3595488cbaf10d26ed9d7,
+    - target: {fileID: -6920777422796474292, guid: dfb166ada9f3595488cbaf10d26ed9d7,
         type: 3}
-      propertyPath: m_overrideGravity
-      value: 1
+      propertyPath: m_setTimer
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 771941579481439575, guid: dfb166ada9f3595488cbaf10d26ed9d7,
+    - target: {fileID: -7125458871151734753, guid: dfb166ada9f3595488cbaf10d26ed9d7,
         type: 3}
-      propertyPath: m_defaultGravity.y
-      value: 9.8
+      propertyPath: m_canBeEdgeTeleported
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfb166ada9f3595488cbaf10d26ed9d7, type: 3}
