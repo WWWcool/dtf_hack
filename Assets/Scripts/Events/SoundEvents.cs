@@ -9,6 +9,7 @@ namespace SoundEvents
         SpikesAppeared,
         LevelFailed,
         LevelCompleted,
+        ButtonClick,
     }
 
     public class SoundEvent : GameEvent
