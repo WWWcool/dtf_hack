@@ -56,9 +56,9 @@ public class TopHUD : MonoBehaviour
 
     void ApplyCfg()
     {
-        m_goalCount.gameObject.SetActive(cfg.showTopHUDGoalCount);
-        m_turnCount.gameObject.SetActive(cfg.showTopHUDTurnCount);
-        m_timer.gameObject.SetActive(cfg.showTopHUDTimer);
+        m_goalCount.gameObject.transform.parent.gameObject.SetActive(cfg.showTopHUDGoalCount);
+        m_turnCount.gameObject.transform.parent.gameObject.SetActive(cfg.showTopHUDTurnCount);
+        m_timer.gameObject.transform.parent.gameObject.SetActive(cfg.showTopHUDTimer);
     }
 
     void InitUI(string title, List<GameRule> rules)
