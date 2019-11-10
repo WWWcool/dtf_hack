@@ -54,13 +54,16 @@ TagManager:
   - name: RingBack
     uniqueID: 3426824227
     locked: 0
+  - name: LowerWall
+    uniqueID: 2065105705
+    locked: 0
   - name: Ball
     uniqueID: 3796878967
     locked: 0
   - name: RingFront
     uniqueID: 3329719857
     locked: 0
-  - name: Wall
+  - name: UpperWall
     uniqueID: 738270591
     locked: 0
   - name: Projectile
