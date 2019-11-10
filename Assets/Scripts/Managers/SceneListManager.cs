@@ -71,7 +71,7 @@ public class SceneListManager : MonoBehaviour
 
     public void LoadPreviousScene()
     {
-        currentLoadIndex--;
+        currentLoadIndex = Mathf.Clamp(currentLoadIndex - 1, 0, SceneManager.sceneCountInBuildSettings - 1);
         sceneEnding = true;
     }
 
