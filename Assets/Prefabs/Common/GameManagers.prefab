@@ -202,6 +202,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_gameLoseShowPrefab: {fileID: 0}
+  m_nextSceneDelay: 2
 --- !u!114 &-6920777422796474292
 MonoBehaviour:
   m_ObjectHideFlags: 0
