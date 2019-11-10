@@ -75,9 +75,11 @@ public class TopHUD : MonoBehaviour
                 case RuleType.GoalCount:
                     SetGoalCount(rule.value);
                     break;
+                case RuleType.TimeCount:
+                    SetTimer(rule.value);
+                    break;
             }
         }
-        SetTimer(0);
     }
 
     void OnUpdateUI(GameEvents.UpdateUI e)
@@ -98,7 +100,6 @@ public class TopHUD : MonoBehaviour
 
     void OnGameEnded(GameEvents.GameEnded e)
     {
-        // gameObject.SetActive(false);
         m_anim.Play(m_animNameDisappear);
         StartCoroutine("OnCompleteDisappearAnimation");
     }

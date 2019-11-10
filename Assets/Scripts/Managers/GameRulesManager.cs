@@ -84,6 +84,9 @@ public class GameRulesManager : MonoBehaviour
         //     " current: " + rule.value +
         //     " def: " + ruleDefault.value
         // );
+
+        UpdateUIOnTrigger(rule, ruleDefault);
+
         if (CheckCondition(rule, ruleDefault))
         {
             rule.completeType = ruleDefault.completeType;
@@ -141,5 +144,30 @@ public class GameRulesManager : MonoBehaviour
     {
         // Debug.Log("[GameRulesManager][RaiseGameEnd] game end with: " + win.ToString());
         EventBus.Instance.Raise(new GameEvents.GameEnded { win = win });
+    }
+
+    private void UpdateUIOnTrigger(GameRule rule, GameRule def)
+    {
+        int goalCount = -1;
+        int turnCount = -1;
+        int timer = -1;
+        switch (rule.type)
+        {
+            case RuleType.TurnCount:
+                turnCount = def.value - rule.value;
+                break;
+            case RuleType.GoalCount:
+                goalCount = def.value - rule.value;
+                break;
+            case RuleType.TimeCount:
+                timer = def.value - rule.value;
+                break;
+        }
+        EventBus.Instance.Raise(new GameEvents.UpdateUI
+        {
+            goalCount = goalCount,
+            turnCount = turnCount,
+            timer = timer
+        });
     }
 }
