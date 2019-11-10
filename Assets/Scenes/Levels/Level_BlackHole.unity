@@ -184,6 +184,7 @@ GameObject:
   m_Component:
   - component: {fileID: 557061234}
   - component: {fileID: 557061235}
+  - component: {fileID: 557061236}
   m_Layer: 12
   m_Name: Visual
   m_TagString: Untagged
@@ -200,7 +201,7 @@ Transform:
   m_GameObject: {fileID: 557061233}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.45, y: 0.45, z: 1}
   m_Children: []
   m_Father: {fileID: 292155472}
   m_RootOrder: 0
@@ -240,11 +241,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -729444557
+  m_SortingLayer: 7
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7fe5f8f2a0be44e18a538372d4f26b0b, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: c018a6f5abf3ff94da9b07c58491af62, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -254,6 +255,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!111 &557061236
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 557061233}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 19463483cbdb7b048818eb30dcabfc2a, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 19463483cbdb7b048818eb30dcabfc2a, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1001 &2026219974
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -501,6 +518,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 771941579481439575, guid: dfb166ada9f3595488cbaf10d26ed9d7,
+        type: 3}
+      propertyPath: m_overrideGravity
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5309516961143398797, guid: dfb166ada9f3595488cbaf10d26ed9d7,
         type: 3}
       propertyPath: m_Name
@@ -560,11 +582,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 771941579481439575, guid: dfb166ada9f3595488cbaf10d26ed9d7,
-        type: 3}
-      propertyPath: m_overrideGravity
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfb166ada9f3595488cbaf10d26ed9d7, type: 3}
