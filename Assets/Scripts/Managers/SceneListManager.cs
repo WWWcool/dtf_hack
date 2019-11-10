@@ -31,6 +31,11 @@ public class SceneListManager : MonoBehaviour
         return m_scenes[GetCurrentSceneIndex()].rules;
     }
 
+    public TopHUDCfg GetCurrentSceneTopHUDCfg()
+    {
+        return m_scenes[GetCurrentSceneIndex()].topHUDCfg;
+    }
+
     public void LoadLastSavedScene()
     {
         LoadScene(loadIndex);

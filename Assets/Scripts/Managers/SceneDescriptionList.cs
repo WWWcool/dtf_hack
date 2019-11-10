@@ -8,6 +8,7 @@ public class SceneDescription
     [SerializeField] public string scene;
     [SerializeField] public string title = "Unknown title";
     [SerializeField] public List<GameRule> rules;
+    [SerializeField] public TopHUDCfg topHUDCfg;
 }
 
 public class SceneDescriptionList : MonoBehaviour

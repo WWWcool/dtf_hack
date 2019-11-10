@@ -32,4 +32,11 @@ namespace GameEvents
     {
 
     }
+
+    public class UpdateUI : GameEvent
+    {
+        public int goalCount = -1;
+        public int turnCount = -1;
+        public int timer = -1;
+    }
 }

@@ -18,13 +18,19 @@ namespace UnityPrototype
 
         private bool m_inputBlocked = false;
 
-        private void OnEnable(){
+        private void OnEnable()
+        {
             EventBus.Instance.AddListener<GameEvents.InputBlocked>(OnInputBlocked);
         }
 
         private void Start()
         {
             m_camera = Camera.main;
+        }
+
+        private void OnDisable()
+        {
+            EventBus.Instance.RemoveListener<GameEvents.InputBlocked>(OnInputBlocked);
         }
 
         private Vector2 GetEventWorldPosition(PointerEventData eventData)
@@ -34,14 +40,14 @@ namespace UnityPrototype
 
         public void OnBeginDrag(PointerEventData eventData)
         {
-            if(m_inputBlocked)
+            if (m_inputBlocked)
                 return;
 
             m_startPoint = GetEventWorldPosition(eventData);
             m_inputInProgress = true;
 
             EventBus.Instance.Raise(new GameEvents.InputStarted());
-            EventBus.Instance.Raise(new GameEvents.RuleTriggered{type = RuleType.TurnCount, value = 1});
+            EventBus.Instance.Raise(new GameEvents.RuleTriggered { type = RuleType.TurnCount, value = 1 });
         }
 
         public void OnDrag(PointerEventData eventData)
@@ -53,7 +59,7 @@ namespace UnityPrototype
 
         public void OnEndDrag(PointerEventData eventData)
         {
-            if(m_inputBlocked)
+            if (m_inputBlocked)
                 return;
 
             m_endPoint = GetEventWorldPosition(eventData);
