@@ -13,12 +13,16 @@ public class SceneListManager : MonoBehaviour
     private List<SceneDescription> m_scenes;
     private int loadIndex = 0;
 
-    private void Start()
+    private void OnEnable()
     {
-        loadIndex = m_resetLoadIndex ? 0 : PlayerPrefs.GetInt(SAVE_KEY, loadIndex);
         var description = Instantiate(m_scenesDescriptionPrefab);
         description.transform.SetParent(transform);
         m_scenes = description.GetComponent<SceneDescriptionList>().GetDescription();
+    }
+
+    private void Start()
+    {
+        loadIndex = m_resetLoadIndex ? 0 : PlayerPrefs.GetInt(SAVE_KEY, loadIndex);
     }
 
     public string GetCurrentSceneTitle()
@@ -49,7 +53,7 @@ public class SceneListManager : MonoBehaviour
 
     public void LoadPreviousScene()
     {
-        LoadScene(GetCurrentSceneIndex() + 1);
+        LoadScene(GetCurrentSceneIndex() - 1);
     }
 
     private void SaveCurrentSceneIndex()
