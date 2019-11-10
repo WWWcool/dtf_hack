@@ -187,17 +187,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7609506088529009741, guid: f0f9daa4eda2b584592244f3be29e305,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7172779093321849552, guid: f0f9daa4eda2b584592244f3be29e305,
         type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5337728522262648554, guid: f0f9daa4eda2b584592244f3be29e305,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7609506088529009741, guid: f0f9daa4eda2b584592244f3be29e305,
         type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -321,11 +321,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8737034740528476505, guid: 57f1280f6acca9c4d86c2ae36285b396,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4769188524990506743, guid: 57f1280f6acca9c4d86c2ae36285b396,
         type: 3}
       propertyPath: m_RootOrder
@@ -336,10 +331,10 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 8193511937779605226, guid: 57f1280f6acca9c4d86c2ae36285b396,
+    - target: {fileID: 8737034740528476505, guid: 57f1280f6acca9c4d86c2ae36285b396,
         type: 3}
-      propertyPath: m_RootOrder
-      value: 1
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6857694171818461290, guid: 57f1280f6acca9c4d86c2ae36285b396,
         type: 3}
@@ -347,6 +342,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2845424399845914382, guid: 57f1280f6acca9c4d86c2ae36285b396,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8193511937779605226, guid: 57f1280f6acca9c4d86c2ae36285b396,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 258461825858480996, guid: 57f1280f6acca9c4d86c2ae36285b396,
         type: 3}
       propertyPath: m_IsActive
       value: 0

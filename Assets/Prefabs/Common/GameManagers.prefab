@@ -188,7 +188,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_scenesDescriptionPrefab: {fileID: 8846753913547698696, guid: 26df01f25aafed344b1f15b314a29758,
     type: 3}
-  m_resetLoadIndex: 0
+  m_resetLoadIndex: 1
   fadeSpeed: 5.5
 --- !u!114 &5858983747649004266
 MonoBehaviour:
