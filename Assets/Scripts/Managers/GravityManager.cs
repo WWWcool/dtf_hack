@@ -19,5 +19,10 @@ namespace UnityPrototype
             if (m_overrideGravity)
                 Physics2D.gravity = m_defaultGravity;
         }
+
+        private void OnDestroy()
+        {
+            Physics2D.gravity = m_originalGravity;
+        }
     }
 }

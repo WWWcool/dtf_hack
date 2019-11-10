@@ -15,6 +15,7 @@ namespace UnityPrototype
             InputBlocked,
             RuleTriggered,
             GameEnded,
+            TimerEnded,
         }
 
         [SerializeField] private EventType m_eventType;
@@ -30,6 +31,7 @@ namespace UnityPrototype
             EventBus.Instance.AddListener<GameEvents.InputBlocked>(OnInputBlocked);
             EventBus.Instance.AddListener<GameEvents.RuleTriggered>(OnRuleTriggered);
             EventBus.Instance.AddListener<GameEvents.GameEnded>(OnGameEnded);
+            EventBus.Instance.AddListener<GameEvents.TimerEnded>(OnTimerEnded);
         }
 
         private void OnDisable()
@@ -70,6 +72,11 @@ namespace UnityPrototype
         private void OnGameEnded(GameEvents.GameEnded e)
         {
             OnEvent(EventType.GameEnded);
+        }
+
+        private void OnTimerEnded(GameEvents.TimerEnded e)
+        {
+            OnEvent(EventType.TimerEnded);
         }
 
         private void OnEvent(EventType eventType)
