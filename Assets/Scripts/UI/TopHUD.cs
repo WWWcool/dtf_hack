@@ -25,7 +25,7 @@ public class TopHUD : MonoBehaviour
 
     private TopHUDCfg cfg;
 
-    private void OnEnable()
+    void Start()
     {
         var manager = ServiceLocator.Get<SceneListManager>();
         if (!manager)
@@ -40,21 +40,17 @@ public class TopHUD : MonoBehaviour
 
         var rect = gameObject.GetComponent<RectTransform>();
         rect.sizeDelta = new Vector2(m_layout.preferredWidth, m_layout.preferredHeight);
-        m_anim.Play(m_animNameAppear);
-    }
 
-    void Start()
-    {
         EventBus.Instance.AddListener<GameEvents.UpdateUI>(OnUpdateUI);
         EventBus.Instance.AddListener<GameEvents.GameEnded>(OnGameEnded);
         m_buttonRestart.onClick.AddListener(delegate { Restart(); });
+        m_anim.Play(m_animNameAppear);
     }
 
     private void OnDisable()
     {
         EventBus.Instance.RemoveListener<GameEvents.UpdateUI>(OnUpdateUI);
         EventBus.Instance.RemoveListener<GameEvents.GameEnded>(OnGameEnded);
-        m_anim.Play(m_animNameDisappear);
     }
 
     public void Restart()
@@ -107,7 +103,17 @@ public class TopHUD : MonoBehaviour
     void OnGameEnded(GameEvents.GameEnded e)
     {
         gameObject.SetActive(false);
+        // m_anim.Play(m_animNameDisappear);
+        // StartCoroutine("OnCompleteDisappearAnimation");
     }
+
+    // IEnumerator OnCompleteDisappearAnimation()
+    // {
+    //     while (m_anim.IsPlaying(m_animNameDisappear))
+    //         yield return null;
+
+    //     gameObject.SetActive(false);
+    // }
 
     public void SetGoalCount(int count)
     {
