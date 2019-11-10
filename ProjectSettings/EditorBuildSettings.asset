@@ -6,6 +6,36 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/Levels/Level1.unity
+    guid: 44d9a7ca94b744443ab582b657706731
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level_BottomGoal.unity
+    guid: d2aae4eda7b90204795c440ad6121735
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level_MovingGoal.unity
+    guid: 0f0d5e73d132671449b15d85f90b1dc3
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level_OneTry.unity
+    guid: b8b5d809d90cbe846a33764102c7d44e
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level_Projectile.unity
+    guid: 0218d7c96580eda4285a339ee9f1a2b5
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level_ThrowGoal.unity
+    guid: 3617a63c81ad6ee4a98bf45544de2fb5
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level_EdgeTeleportation.unity
+    guid: b37c18f9e5146b04f9e25e632031939a
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level_BallBanging.unity
+    guid: bbdd5af0714a14e4caa48f6678eda332
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level_DragGoal.unity
+    guid: aca87ed603b3352409e1b73607041069
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level_ReverseGravity.unity
+    guid: fe390205a07c14e428df379c5e1b4ef5
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level_BlackHole.unity
+    guid: efdecaa2f7508f748a8c4181cfab3bf7
   m_configObjects: {}

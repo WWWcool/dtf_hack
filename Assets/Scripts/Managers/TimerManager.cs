@@ -3,20 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class TimerManager : MonoBehaviour
-{  
-    [SerializeField] private float m_timerDuration;
-    private float m_currentDuration;
+{
+    [SerializeField] private bool m_setTimer = false;
+    private int m_currentDuration = 0;
     private bool m_isRunning = false;
     private bool m_needReset = false;
 
-    private void Start()
-    {
-        m_currentDuration = m_timerDuration;
-    }
 
-    public void TimerSrart()
+    public void TimerStart()
     {
-        if (!m_isRunning)
+        if (!m_isRunning && m_setTimer)
         {
             m_isRunning = true;
             StartCoroutine(Timer());
@@ -25,20 +21,21 @@ public class TimerManager : MonoBehaviour
 
     private IEnumerator Timer()
     {
-        while (m_currentDuration > 0)
+        while (true)
         {
-            m_currentDuration -= Time.deltaTime;
+            m_currentDuration += 1;
             if (m_needReset)
             {
                 m_needReset = false;
-                m_currentDuration = m_timerDuration;
+                EventBus.Instance.Raise(new GameEvents.RuleTriggered { type = RuleType.TimeCount, value = -m_currentDuration });
+                m_currentDuration = 0;
                 m_isRunning = false;
                 yield break;
             }
+            yield return new WaitForSeconds(1.0f);
             Debug.Log(m_currentDuration);
-            yield return null;
+            EventBus.Instance.Raise(new GameEvents.RuleTriggered { type = RuleType.TimeCount, value = 1 });
         }
-        EventBus.Instance.Raise(new GameEvents.TimerEnded());
     }
 
     public void TimerReset()

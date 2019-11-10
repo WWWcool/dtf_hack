@@ -28,11 +28,7 @@ namespace GameEvents
     {
         public bool win;
     }
-    public class TimerEnded : GameEvent
-    {
-
-    }
-
+    
     public class UpdateUI : GameEvent
     {
         public int goalCount = -1;
