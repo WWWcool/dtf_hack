@@ -46,11 +46,6 @@ public class GameRulesManager : MonoBehaviour
     private List<GameRule> m_rules;
     private List<GameRule> m_current_rules = new List<GameRule>();
 
-    private void OnEnable()
-    {
-        Debug.Log("[GameRulesManager][OnEnable] OnEnable id: " + gameObject.GetInstanceID().ToString());
-    }
-
     void Start()
     {
         var manager = ServiceLocator.Get<SceneListManager>();
@@ -61,7 +56,6 @@ public class GameRulesManager : MonoBehaviour
         }
 
         m_rules = manager.GetCurrentSceneRules();
-        Debug.Log("[GameRulesManager][Start] find rules");
 
         EventBus.Instance.AddListener<GameEvents.RuleTriggered>(OnRuleTriggered);
         m_current_rules.Clear();
@@ -72,6 +66,11 @@ public class GameRulesManager : MonoBehaviour
         }
     }
 
+    private void OnDisable()
+    {
+        EventBus.Instance.RemoveListener<GameEvents.RuleTriggered>(OnRuleTriggered);
+    }
+
     void OnRuleTriggered(GameEvents.RuleTriggered e)
     {
         var rule = m_current_rules.Find(r => r.type == e.type);
@@ -79,11 +78,11 @@ public class GameRulesManager : MonoBehaviour
 
         rule.value += e.value;
 
-        Debug.Log(
-            "[GameRulesManager][OnRuleTriggered] rule: " + rule.type.ToString() +
-            " current: " + rule.value +
-            " def: " + ruleDefault.value
-        );
+        // Debug.Log(
+        //     "[GameRulesManager][OnRuleTriggered] rule: " + rule.type.ToString() +
+        //     " current: " + rule.value +
+        //     " def: " + ruleDefault.value
+        // );
         if (CheckCondition(rule, ruleDefault))
         {
             rule.completeType = ruleDefault.completeType;
@@ -139,7 +138,7 @@ public class GameRulesManager : MonoBehaviour
 
     public void RaiseGameEnd(bool win)
     {
-        Debug.Log("[GameRulesManager][RaiseGameEnd] game end with: " + win.ToString());
+        // Debug.Log("[GameRulesManager][RaiseGameEnd] game end with: " + win.ToString());
         EventBus.Instance.Raise(new GameEvents.GameEnded { win = win });
     }
 }

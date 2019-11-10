@@ -11,6 +11,11 @@ public class GameEndManager : MonoBehaviour
         EventBus.Instance.AddListener<GameEvents.GameEnded>(OnGameEnded);
     }
 
+    private void OnDisable()
+    {
+        EventBus.Instance.RemoveListener<GameEvents.GameEnded>(OnGameEnded);
+    }
+
     void OnGameEnded(GameEvents.GameEnded e)
     {
         if (e.win)
