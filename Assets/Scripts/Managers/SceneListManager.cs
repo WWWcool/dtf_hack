@@ -77,7 +77,8 @@ public class SceneListManager : MonoBehaviour
 
     private void SaveCurrentSceneIndex()
     {
-        PlayerPrefs.SetInt(SAVE_KEY, currentLoadIndex);
+        if(currentLoadIndex ==0) PlayerPrefs.SetInt(SAVE_KEY, 1);
+        else PlayerPrefs.SetInt(SAVE_KEY, currentLoadIndex);
     }
 
     private int GetCurrentSceneIndex()
