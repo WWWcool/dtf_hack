@@ -209,3 +209,22 @@ MonoBehaviour:
       showTopHUDTurnCount: 0
       showTopHUDGoalCount: 0
       showTopHUDTimer: 0
+  - scene: Level_FewSpeedGoals
+    title: The fastest hand in the West
+    rules:
+    - type: 0
+      value: 1
+      completeType: 3
+      conditionType: 1
+    - type: 1
+      value: 5
+      completeType: 1
+      conditionType: 0
+    - type: 2
+      value: 10
+      completeType: 0
+      conditionType: 0
+    topHUDCfg:
+      showTopHUDTurnCount: 0
+      showTopHUDGoalCount: 1
+      showTopHUDTimer: 1

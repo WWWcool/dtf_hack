@@ -12,7 +12,7 @@ public class SceneListManager : MonoBehaviour
     private static string SAVE_KEY = "lastSceneIndex";
 
     private List<SceneDescription> m_scenes;
-    private int loadIndex = 0;
+    private int loadIndex = 1;
     private int currentLoadIndex = 0;
 
     private bool sceneStarting = true;
@@ -31,7 +31,7 @@ public class SceneListManager : MonoBehaviour
     {
         GameObject image = GameObject.Find("Fade");
         fade = image.GetComponent<Image>();
-        loadIndex = m_resetLoadIndex ? 0 : PlayerPrefs.GetInt(SAVE_KEY, loadIndex);
+        loadIndex = m_resetLoadIndex ? 1 : PlayerPrefs.GetInt(SAVE_KEY, loadIndex);
         currentLoadIndex = SceneManager.GetActiveScene().buildIndex;
         fade.enabled = false;
     }

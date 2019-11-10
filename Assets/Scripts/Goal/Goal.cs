@@ -18,7 +18,7 @@ namespace UnityPrototype
         [SerializeField] private DirectionType m_directionType = DirectionType.Top;
         [SerializeField] private float m_detectionPeriod = 0.5f;
 
-        private bool m_ballPassed = false;
+        public bool m_ballPassed = false;
         private float m_resetDelay = 0.0f;
 
         private DirectionType? m_pendingDirection = null;

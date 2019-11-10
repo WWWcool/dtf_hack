@@ -67,7 +67,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -965247439
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 72d527fdefe18c543a8821b9da521a2d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -187,6 +187,7 @@ MonoBehaviour:
   m_bottomDetector: {fileID: 8746875583817600722}
   m_directionType: 0
   m_detectionPeriod: 0.5
+  m_ballPassed: 0
 --- !u!1 &4696545569792716160
 GameObject:
   m_ObjectHideFlags: 0
@@ -341,6 +342,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5486527428430163190}
   - component: {fileID: 1655270043880468989}
+  - component: {fileID: 7123954708101229108}
   m_Layer: 14
   m_Name: TouchCollider
   m_TagString: Untagged
@@ -372,12 +374,24 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.0726589, y: -0.007511556}
   serializedVersion: 2
   m_Radius: 0.56514734
+--- !u!114 &7123954708101229108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6796113309199574681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99a23326224f93d4495d7e874feb8cdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7849075206337861540
 GameObject:
   m_ObjectHideFlags: 0
@@ -522,16 +536,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4696545567985249949}
     m_Modifications:
-    - target: {fileID: 2034739390677921695, guid: 5fc46b322dab09143b9534915e14e502,
-        type: 3}
-      propertyPath: m_Offset.x
-      value: -0.10021919
-      objectReference: {fileID: 0}
-    - target: {fileID: 2034739390677921695, guid: 5fc46b322dab09143b9534915e14e502,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 1.1004384
-      objectReference: {fileID: 0}
     - target: {fileID: 8124142191207377800, guid: 5fc46b322dab09143b9534915e14e502,
         type: 3}
       propertyPath: m_Name
@@ -592,6 +596,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2034739390677921695, guid: 5fc46b322dab09143b9534915e14e502,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: -0.10021919
+      objectReference: {fileID: 0}
+    - target: {fileID: 2034739390677921695, guid: 5fc46b322dab09143b9534915e14e502,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 1.1004384
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5fc46b322dab09143b9534915e14e502, type: 3}
 --- !u!4 &5716850542231516779 stripped
@@ -619,16 +633,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4696545567985249949}
     m_Modifications:
-    - target: {fileID: 2034739390677921695, guid: 5fc46b322dab09143b9534915e14e502,
-        type: 3}
-      propertyPath: m_Offset.x
-      value: -0.10773569
-      objectReference: {fileID: 0}
-    - target: {fileID: 2034739390677921695, guid: 5fc46b322dab09143b9534915e14e502,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 1.1154711
-      objectReference: {fileID: 0}
     - target: {fileID: 8124142191207377800, guid: 5fc46b322dab09143b9534915e14e502,
         type: 3}
       propertyPath: m_Name
@@ -688,6 +692,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2034739390677921695, guid: 5fc46b322dab09143b9534915e14e502,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: -0.10773569
+      objectReference: {fileID: 0}
+    - target: {fileID: 2034739390677921695, guid: 5fc46b322dab09143b9534915e14e502,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 1.1154711
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5fc46b322dab09143b9534915e14e502, type: 3}
