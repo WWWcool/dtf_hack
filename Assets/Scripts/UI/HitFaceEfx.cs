@@ -22,6 +22,7 @@ public class HitFaceEfx : MonoBehaviour
         PlayerPrefs.SetInt(SAVE_KEY, m_faceHitCount);
         m_anim.Play(m_animNames[m_faceHitCount]);
         StartCoroutine("OnCompleteAnimation");
+        EventBus.Instance.Raise(new SoundEvents.SoundEvent { type = SoundEvents.SoundType.Face });
     }
 
     IEnumerator OnCompleteAnimation()

@@ -10,6 +10,7 @@ namespace SoundEvents
         LevelFailed,
         LevelCompleted,
         ButtonClick,
+        Face,
     }
 
     public class SoundEvent : GameEvent
