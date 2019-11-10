@@ -8,7 +8,7 @@ namespace UnityPrototype
     {
         public event System.Action<Collider2D, Vector2> onObjectDetected;
 
-        private void OnTriggerEnter2D(Collider2D other)
+        private void OnTriggerStay2D(Collider2D other)
         {
             var posDelta = transform.position - other.transform.position;
             onObjectDetected?.Invoke(other, posDelta.normalized);
