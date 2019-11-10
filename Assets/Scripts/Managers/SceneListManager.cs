@@ -60,7 +60,7 @@ public class SceneListManager : MonoBehaviour
     public void LoadNextScene()
     {
         currentLoadIndex++;
-        if (currentLoadIndex > SceneManager.sceneCountInBuildSettings)
+        if (currentLoadIndex >= SceneManager.sceneCountInBuildSettings)
         {
             currentLoadIndex = 0;
         }

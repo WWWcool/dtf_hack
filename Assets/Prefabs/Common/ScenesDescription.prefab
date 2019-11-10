@@ -55,6 +55,10 @@ MonoBehaviour:
       value: 1
       completeType: 3
       conditionType: 0
+    topHUDCfg:
+      showTopHUDTurnCount: 0
+      showTopHUDGoalCount: 0
+      showTopHUDTimer: 0
   - scene: Level_BottomGoal
     title: Check your back
     rules:
@@ -66,6 +70,10 @@ MonoBehaviour:
       value: 1
       completeType: 1
       conditionType: 0
+    topHUDCfg:
+      showTopHUDTurnCount: 0
+      showTopHUDGoalCount: 0
+      showTopHUDTimer: 0
   - scene: Level_MovingGoal
     title: Catch me if you can
     rules:
@@ -77,6 +85,10 @@ MonoBehaviour:
       value: 1
       completeType: 1
       conditionType: 0
+    topHUDCfg:
+      showTopHUDTurnCount: 0
+      showTopHUDGoalCount: 0
+      showTopHUDTimer: 0
   - scene: Level_OneTry
     title: One shot one kill
     rules:
@@ -88,6 +100,10 @@ MonoBehaviour:
       value: 1
       completeType: 1
       conditionType: 0
+    topHUDCfg:
+      showTopHUDTurnCount: 1
+      showTopHUDGoalCount: 0
+      showTopHUDTimer: 0
   - scene: Level_Projectile
     title: The Matrix
     rules:
@@ -99,6 +115,10 @@ MonoBehaviour:
       value: 1
       completeType: 1
       conditionType: 0
+    topHUDCfg:
+      showTopHUDTurnCount: 1
+      showTopHUDGoalCount: 0
+      showTopHUDTimer: 0
   - scene: Level_ThrowGoal
     title: WTF?!
     rules:
@@ -110,6 +130,10 @@ MonoBehaviour:
       value: 1
       completeType: 1
       conditionType: 0
+    topHUDCfg:
+      showTopHUDTurnCount: 0
+      showTopHUDGoalCount: 0
+      showTopHUDTimer: 0
   - scene: Level_EdgeTeleportation
     title: Around the world, around the world
     rules:
@@ -121,6 +145,10 @@ MonoBehaviour:
       value: 1
       completeType: 1
       conditionType: 0
+    topHUDCfg:
+      showTopHUDTurnCount: 0
+      showTopHUDGoalCount: 0
+      showTopHUDTimer: 0
   - scene: Level_BallBanging
     title: The floor is lava
     rules:
@@ -132,6 +160,10 @@ MonoBehaviour:
       value: 5
       completeType: 1
       conditionType: 0
+    topHUDCfg:
+      showTopHUDTurnCount: 0
+      showTopHUDGoalCount: 0
+      showTopHUDTimer: 1
   - scene: Level_DragGoal
     title: That's unfair
     rules:
@@ -143,6 +175,10 @@ MonoBehaviour:
       value: 1
       completeType: 1
       conditionType: 0
+    topHUDCfg:
+      showTopHUDTurnCount: 0
+      showTopHUDGoalCount: 0
+      showTopHUDTimer: 0
   - scene: Level_ReverseGravity
     title: Ground control to major ball
     rules:
@@ -154,6 +190,10 @@ MonoBehaviour:
       value: 1
       completeType: 1
       conditionType: 0
+    topHUDCfg:
+      showTopHUDTurnCount: 0
+      showTopHUDGoalCount: 0
+      showTopHUDTimer: 0
   - scene: Level_BlackHole
     title: Come on TARS
     rules:
@@ -165,3 +205,7 @@ MonoBehaviour:
       value: 1
       completeType: 1
       conditionType: 0
+    topHUDCfg:
+      showTopHUDTurnCount: 0
+      showTopHUDGoalCount: 0
+      showTopHUDTimer: 0
