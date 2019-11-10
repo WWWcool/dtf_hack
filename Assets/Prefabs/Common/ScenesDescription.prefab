@@ -128,8 +128,8 @@ MonoBehaviour:
       value: 1
       completeType: 3
       conditionType: 1
-    - type: 1
-      value: 1
+    - type: 2
+      value: 5
       completeType: 1
       conditionType: 0
   - scene: Level_DragGoal
@@ -144,7 +144,7 @@ MonoBehaviour:
       completeType: 1
       conditionType: 0
   - scene: Level_ReverseGravity
-    title: ground control to major ball
+    title: Ground control to major ball
     rules:
     - type: 0
       value: 1

@@ -6,6 +6,7 @@ public enum RuleType
 {
     TurnCount,
     GoalCount,
+    TimeCount,
 }
 
 public enum RuleCompleteType

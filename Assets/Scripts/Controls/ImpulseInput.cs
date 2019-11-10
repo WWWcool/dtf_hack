@@ -41,7 +41,7 @@ namespace UnityPrototype
             m_inputInProgress = true;
 
             EventBus.Instance.Raise(new GameEvents.InputStarted());
-            EventBus.Instance.Raise(new GameEvents.RuleTriggered{type = RuleType.TurnCount, value = 1});
+            
         }
 
         public void OnDrag(PointerEventData eventData)
@@ -60,6 +60,7 @@ namespace UnityPrototype
             m_inputInProgress = false;
 
             EventBus.Instance.Raise(new GameEvents.InputFinished { impulse = CalculateImpulse() });
+            EventBus.Instance.Raise(new GameEvents.RuleTriggered { type = RuleType.TurnCount, value = 1 });
         }
 
         private Vector2 CalculateImpulse()
