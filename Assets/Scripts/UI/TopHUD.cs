@@ -106,8 +106,10 @@ public class TopHUD : MonoBehaviour
         if (!e.win && !hitFace)
         {
             hitFace = true;
-            var efx = Instantiate(m_hitFaceEfxPrefab);
-            efx.transform.SetParent(transform.parent);
+            var efx = Instantiate(m_hitFaceEfxPrefab, transform.parent);
+            efx.transform.localPosition = Vector3.zero;
+            efx.transform.localScale = Vector3.one;
+            efx.transform.localRotation = Quaternion.identity;
         }
         // StartCoroutine("OnCompleteDisappearAnimation");
     }
