@@ -63,6 +63,9 @@ TagManager:
   - name: Wall
     uniqueID: 738270591
     locked: 0
+  - name: Projectile
+    uniqueID: 3565522739
+    locked: 0
   - name: Trajectory
     uniqueID: 1125548297
     locked: 0
