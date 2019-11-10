@@ -28,4 +28,8 @@ namespace GameEvents
     {
         public bool win;
     }
+    public class TimerEnded : GameEvent
+    {
+
+    }
 }
