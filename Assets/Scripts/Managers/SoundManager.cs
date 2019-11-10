@@ -6,11 +6,14 @@ namespace UnityPrototype
 {
     public class SoundManager : MonoBehaviour
     {
+        [SerializeField] private AudioClip m_backgroundMusic;
         [SerializeField] private SoundFxDescription m_description = default;
         [SerializeField] private AudioSource m_audioPlayerPrefab = null;
 
         private List<AudioSource> m_audioPlayers = new List<AudioSource>();
         private Stack<AudioSource> m_freeAudioPlayers = new Stack<AudioSource>();
+
+        private AudioSource m_backgroundPlayer;
 
         private void OnEnable()
         {
@@ -20,6 +23,14 @@ namespace UnityPrototype
         private void OnDisable()
         {
             EventBus.Instance.RemoveListener<SoundEvents.SoundEvent>(OnSoundEvent);
+        }
+
+        private void Start()
+        {
+            m_backgroundPlayer = CreateAudioPlayer();
+            m_backgroundPlayer.loop = true;
+            m_backgroundPlayer.clip = m_backgroundMusic;
+            m_backgroundPlayer.Play();
         }
 
         private void OnSoundEvent(SoundEvents.SoundEvent e)

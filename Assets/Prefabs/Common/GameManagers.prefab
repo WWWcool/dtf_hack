@@ -241,6 +241,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72b822bcd5acaa343ac2a65a3c913336, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_backgroundMusic: {fileID: 8300000, guid: ea95683c3ff3cd04ab13b76f3297af62, type: 3}
   m_description: {fileID: 11400000, guid: decfde249434b7e48a3c1642cdf8051f, type: 2}
   m_audioPlayerPrefab: {fileID: 6895694844895780124, guid: 0ed679bc55127394883bc25d0a90d7a8,
     type: 3}
