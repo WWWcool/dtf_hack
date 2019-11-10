@@ -32,7 +32,8 @@ public class GameRule
     [SerializeField] public RuleCompleteType completeType = RuleCompleteType.Pending;
     [SerializeField] public RuleConditionType conditionType = RuleConditionType.EqualOrMore;
 
-    public GameRule(GameRule rule){
+    public GameRule(GameRule rule)
+    {
         type = rule.type;
         conditionType = rule.conditionType;
         value = 0;
@@ -42,15 +43,31 @@ public class GameRule
 
 public class GameRulesManager : MonoBehaviour
 {
-    [SerializeField] private List<GameRule> m_rules;
-    
+    private List<GameRule> m_rules;
     private List<GameRule> m_current_rules = new List<GameRule>();
+
+    private void OnEnable()
+    {
+        Debug.Log("[GameRulesManager][OnEnable] OnEnable id: " + gameObject.GetInstanceID().ToString());
+    }
 
     void Start()
     {
+        var manager = ServiceLocator.Get<SceneListManager>();
+        if (!manager)
+        {
+            Debug.LogWarning("[GameRulesManager][Start] can`t find SceneListManager");
+            return;
+        }
+
+        m_rules = manager.GetCurrentSceneRules();
+        Debug.Log("[GameRulesManager][Start] find rules");
+
         EventBus.Instance.AddListener<GameEvents.RuleTriggered>(OnRuleTriggered);
-        foreach(var rule in m_rules){
-            
+        m_current_rules.Clear();
+        foreach (var rule in m_rules)
+        {
+
             m_current_rules.Add(new GameRule(rule));
         }
     }
@@ -61,58 +78,68 @@ public class GameRulesManager : MonoBehaviour
         var ruleDefault = m_rules.Find(r => r.type == e.type);
 
         rule.value += e.value;
-        
-        
-        if(CheckCondition(rule, ruleDefault)){
+
+        Debug.Log(
+            "[GameRulesManager][OnRuleTriggered] rule: " + rule.type.ToString() +
+            " current: " + rule.value +
+            " def: " + ruleDefault.value
+        );
+        if (CheckCondition(rule, ruleDefault))
+        {
             rule.completeType = ruleDefault.completeType;
             ProcessRuleChange();
         }
     }
 
-    bool CheckCondition(GameRule current, GameRule def){
+    bool CheckCondition(GameRule current, GameRule def)
+    {
         bool res = false;
-        switch(def.conditionType)
+        switch (def.conditionType)
         {
             case RuleConditionType.EqualOrMore:
                 res = current.value >= def.value;
-            break;
+                break;
             case RuleConditionType.More:
                 res = current.value > def.value;
-            break;
+                break;
             case RuleConditionType.Less:
                 res = current.value < def.value;
-            break;
+                break;
             case RuleConditionType.NotEqual:
                 res = current.value != def.value;
-            break;
+                break;
         }
         return res;
     }
 
-    void ProcessRuleChange(){
+    void ProcessRuleChange()
+    {
         bool allPending = true;
-        foreach(var rule in m_current_rules)
+        foreach (var rule in m_current_rules)
         {
-            switch(rule.completeType)
+            switch (rule.completeType)
             {
                 case RuleCompleteType.Lose:
                     RaiseGameEnd(false);
-                return;
+                    return;
                 case RuleCompleteType.Win:
                     RaiseGameEnd(true);
-                return;
+                    return;
                 case RuleCompleteType.None:
                     allPending = false;
-                break;
+                    break;
             }
         }
 
-        if(allPending){
+        if (allPending)
+        {
             RaiseGameEnd(true);
         }
     }
 
-    public void RaiseGameEnd(bool win){
-        EventBus.Instance.Raise(new GameEvents.GameEnded{win = win});
+    public void RaiseGameEnd(bool win)
+    {
+        Debug.Log("[GameRulesManager][RaiseGameEnd] game end with: " + win.ToString());
+        EventBus.Instance.Raise(new GameEvents.GameEnded { win = win });
     }
 }

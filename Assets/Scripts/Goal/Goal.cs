@@ -29,14 +29,14 @@ namespace UnityPrototype
 
         private void OnBallPassed(DirectionType type)
         {
-            if(m_directionType != DirectionType.Any)
+            if (m_directionType != DirectionType.Any)
             {
                 if (type != m_directionType)
                     return;
-            } 
+            }
 
             Debug.Log("Ball reached the goal");
-            EventBus.Instance.Raise(new GameEvents.RuleTriggered{type = RuleType.GoalCount, value = 1});
+            EventBus.Instance.Raise(new GameEvents.RuleTriggered { type = RuleType.GoalCount, value = 1 });
             m_ballPassed = true;
         }
 
