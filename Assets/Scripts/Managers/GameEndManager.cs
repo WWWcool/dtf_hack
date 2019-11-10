@@ -7,6 +7,8 @@ public class GameEndManager : MonoBehaviour
     [SerializeField] private GameObject m_gameLoseShowPrefab;
     [SerializeField] private float m_nextSceneDelay = 0.0f;
 
+    private bool gameEnded = false;
+
     void Start()
     {
         EventBus.Instance.AddListener<GameEvents.GameEnded>(OnGameEnded);
@@ -19,6 +21,11 @@ public class GameEndManager : MonoBehaviour
 
     void OnGameEnded(GameEvents.GameEnded e)
     {
+        if (gameEnded)
+            return;
+
+        gameEnded = true;
+
         if (e.win)
             EventBus.Instance.Raise(new SoundEvents.SoundEvent { type = SoundEvents.SoundType.LevelCompleted });
         else
