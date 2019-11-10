@@ -69,6 +69,9 @@ TagManager:
   - name: Projectile
     uniqueID: 3565522739
     locked: 0
+  - name: Player
+    uniqueID: 2526576841
+    locked: 0
   - name: Trajectory
     uniqueID: 1125548297
     locked: 0
