@@ -1,0 +1,230 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8846753913547698696
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7073432328115425831}
+  - component: {fileID: 2010900850246920047}
+  m_Layer: 0
+  m_Name: ScenesDescription
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7073432328115425831
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8846753913547698696}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2010900850246920047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8846753913547698696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95104f0bd44206b438e416de5069c1d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_scenes:
+  - scene: Level1
+    title: Basketball
+    rules:
+    - type: 1
+      value: 1
+      completeType: 1
+      conditionType: 0
+    - type: 0
+      value: 1
+      completeType: 3
+      conditionType: 0
+    topHUDCfg:
+      showTopHUDTurnCount: 0
+      showTopHUDGoalCount: 0
+      showTopHUDTimer: 0
+  - scene: Level_BottomGoal
+    title: Check your back
+    rules:
+    - type: 0
+      value: 1
+      completeType: 3
+      conditionType: 1
+    - type: 1
+      value: 1
+      completeType: 1
+      conditionType: 0
+    topHUDCfg:
+      showTopHUDTurnCount: 0
+      showTopHUDGoalCount: 0
+      showTopHUDTimer: 0
+  - scene: Level_MovingGoal
+    title: Catch me if you can
+    rules:
+    - type: 0
+      value: 1
+      completeType: 3
+      conditionType: 1
+    - type: 1
+      value: 1
+      completeType: 1
+      conditionType: 0
+    topHUDCfg:
+      showTopHUDTurnCount: 0
+      showTopHUDGoalCount: 0
+      showTopHUDTimer: 0
+  - scene: Level_OneTry
+    title: One shot one kill
+    rules:
+    - type: 0
+      value: 1
+      completeType: 0
+      conditionType: 1
+    - type: 1
+      value: 1
+      completeType: 1
+      conditionType: 0
+    topHUDCfg:
+      showTopHUDTurnCount: 1
+      showTopHUDGoalCount: 0
+      showTopHUDTimer: 0
+  - scene: Level_Projectile
+    title: The Matrix
+    rules:
+    - type: 0
+      value: 2
+      completeType: 0
+      conditionType: 1
+    - type: 1
+      value: 1
+      completeType: 1
+      conditionType: 0
+    topHUDCfg:
+      showTopHUDTurnCount: 1
+      showTopHUDGoalCount: 0
+      showTopHUDTimer: 0
+  - scene: Level_ThrowGoal
+    title: WTF?!
+    rules:
+    - type: 0
+      value: 1
+      completeType: 3
+      conditionType: 1
+    - type: 1
+      value: 1
+      completeType: 1
+      conditionType: 0
+    topHUDCfg:
+      showTopHUDTurnCount: 0
+      showTopHUDGoalCount: 0
+      showTopHUDTimer: 0
+  - scene: Level_EdgeTeleportation
+    title: Around the world, around the world
+    rules:
+    - type: 0
+      value: 1
+      completeType: 3
+      conditionType: 1
+    - type: 1
+      value: 1
+      completeType: 1
+      conditionType: 0
+    topHUDCfg:
+      showTopHUDTurnCount: 0
+      showTopHUDGoalCount: 0
+      showTopHUDTimer: 0
+  - scene: Level_BallBanging
+    title: The floor is lava
+    rules:
+    - type: 0
+      value: 1
+      completeType: 3
+      conditionType: 1
+    - type: 2
+      value: 5
+      completeType: 1
+      conditionType: 0
+    topHUDCfg:
+      showTopHUDTurnCount: 0
+      showTopHUDGoalCount: 0
+      showTopHUDTimer: 1
+  - scene: Level_DragGoal
+    title: That's unfair
+    rules:
+    - type: 0
+      value: 1
+      completeType: 3
+      conditionType: 1
+    - type: 1
+      value: 1
+      completeType: 1
+      conditionType: 0
+    topHUDCfg:
+      showTopHUDTurnCount: 0
+      showTopHUDGoalCount: 0
+      showTopHUDTimer: 0
+  - scene: Level_ReverseGravity
+    title: Ground control to major ball
+    rules:
+    - type: 0
+      value: 1
+      completeType: 3
+      conditionType: 1
+    - type: 1
+      value: 1
+      completeType: 1
+      conditionType: 0
+    topHUDCfg:
+      showTopHUDTurnCount: 0
+      showTopHUDGoalCount: 0
+      showTopHUDTimer: 0
+  - scene: Level_BlackHole
+    title: Come on TARS
+    rules:
+    - type: 0
+      value: 1
+      completeType: 3
+      conditionType: 1
+    - type: 1
+      value: 1
+      completeType: 1
+      conditionType: 0
+    topHUDCfg:
+      showTopHUDTurnCount: 0
+      showTopHUDGoalCount: 0
+      showTopHUDTimer: 0
+  - scene: Level_FewSpeedGoals
+    title: The fastest hand in the West
+    rules:
+    - type: 0
+      value: 1
+      completeType: 3
+      conditionType: 1
+    - type: 1
+      value: 5
+      completeType: 1
+      conditionType: 0
+    - type: 2
+      value: 10
+      completeType: 0
+      conditionType: 0
+    topHUDCfg:
+      showTopHUDTurnCount: 0
+      showTopHUDGoalCount: 1
+      showTopHUDTimer: 1

@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Ball
+  - Ground
+  - Goal
+  - FxTemporaire
   layers:
   - Default
   - TransparentFX
@@ -13,14 +17,14 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Ball
+  - Goal
+  - Wall
+  - InputArea
+  - BlackHole
+  - Projectile
+  - GoalTouch
+  - RingArea
   - 
   - 
   - 
@@ -40,4 +44,34 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 4045058205
+    locked: 0
+  - name: RingShield
+    uniqueID: 762458383
+    locked: 0
+  - name: RingBack
+    uniqueID: 3426824227
+    locked: 0
+  - name: LowerWall
+    uniqueID: 2065105705
+    locked: 0
+  - name: Ball
+    uniqueID: 3796878967
+    locked: 0
+  - name: RingFront
+    uniqueID: 3329719857
+    locked: 0
+  - name: UpperWall
+    uniqueID: 738270591
+    locked: 0
+  - name: Projectile
+    uniqueID: 3565522739
+    locked: 0
+  - name: Player
+    uniqueID: 2526576841
+    locked: 0
+  - name: Trajectory
+    uniqueID: 1125548297
     locked: 0
